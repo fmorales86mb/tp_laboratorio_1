@@ -31,7 +31,14 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="funciones.h">
+		<Unit filename="fPersona.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="fPersona.h" />
+		<Unit filename="fValidacion.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="fValidacion.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="main.c">
