@@ -1,0 +1,25 @@
+# depslib dependency file v1.0
+1505944951 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp2\tp_2\fpersona.c
+	<stdio.h>
+	<stdlib.h>
+	"fPersona.h"
+	"Input/input.h"
+
+1505944951 c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp2\tp_2\fpersona.h
+
+1505251721 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp2\tp_2\fvalidacion.c
+
+1505944795 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp2\tp_2\main.c
+	<stdio.h>
+	<stdlib.h>
+	"fPersona.h"
+
+1504560580 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp2\tp_2\input\input.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<ctype.h>
+
+1460746094 c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp2\tp_2\input\input.h
+

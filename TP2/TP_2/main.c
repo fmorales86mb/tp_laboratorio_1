@@ -2,14 +2,16 @@
 #include <stdlib.h>
 #include "fPersona.h"
 #define TAM 50
-
+#define TAMLIST 19
 
 int main()
 {
     char seguir='s';
     int opcion=0;
-    EPersona listaPersonas[20];
-    int contador=0;
+    EPersona listaPersonas[TAMLIST] = {0};
+    //int contador=0;
+    int indiceLibre;
+    EPersona persona;
 
     while(seguir=='s')
     {
@@ -29,7 +31,11 @@ int main()
         {
             case 1:
                 system("cls");
-                agregarPersona(listaPersonas[contador], 50);
+                indiceLibre = obtenerEspacioLibre(listaPersonas, TAMLIST);
+                persona = ingresarPersona(TAM);
+                printf("%d", indiceLibre);
+                system("pause");
+
                 break;
             case 2:
                 break;
