@@ -6,7 +6,7 @@ typedef struct {
     char nombre[50];
     int edad;
     int estado;
-    int dni;
+    long int dni;
 
 }EPersona;
 
@@ -23,7 +23,7 @@ int obtenerEspacioLibre(EPersona lista[], int tam);
  * @param dni el dni a ser buscado en el array.
  * @return el indice en donde se encuentra el elemento que coincide con el parametro dni
  */
-int buscarPorDni(EPersona lista[], int tam, int dni);
+int buscarPorDni(EPersona lista[], int tam, long int dni);
 
 /**
  * Pide los datos del struct EPersona al usuario.
@@ -38,7 +38,7 @@ EPersona ingresarPersona (int strTam);
  * @param tamaño del array.
  * @param dni de la persona a borrar.
  */
-void quitarPersonaDeLista(EPersona lista[], int tam, int dni);
+void quitarPersonaDeLista(EPersona lista[], int tam, long int dni);
 
 /**
  * Ordena lista por nombre alfabético.

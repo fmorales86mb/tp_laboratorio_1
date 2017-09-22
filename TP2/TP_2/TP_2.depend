@@ -23,26 +23,34 @@
 
 1460746094 c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp2\tp_2\input\input.h
 
-1506048499 source:c:\users\moncho\documents\tp_laboratorio_1\tp2\tp_2\fpersona.c
+1506051997 source:c:\users\moncho\documents\tp_laboratorio_1\tp2\tp_2\fpersona.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"fPersona.h"
 	"Input/input.h"
+	"Arreglos/arreglo.h"
 
-1506047529 c:\users\moncho\documents\tp_laboratorio_1\tp2\tp_2\fpersona.h
+1506050258 c:\users\moncho\documents\tp_laboratorio_1\tp2\tp_2\fpersona.h
 
-1506028975 c:\users\moncho\documents\tp_laboratorio_1\tp2\tp_2\input\input.h
+1506050057 c:\users\moncho\documents\tp_laboratorio_1\tp2\tp_2\input\input.h
 
-1506028975 source:c:\users\moncho\documents\tp_laboratorio_1\tp2\tp_2\input\input.c
+1506050057 source:c:\users\moncho\documents\tp_laboratorio_1\tp2\tp_2\input\input.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<conio.h>
 	<ctype.h>
 
-1506048791 source:c:\users\moncho\documents\tp_laboratorio_1\tp2\tp_2\main.c
+1506051458 source:c:\users\moncho\documents\tp_laboratorio_1\tp2\tp_2\main.c
 	<stdio.h>
 	<stdlib.h>
 	"fPersona.h"
+	"Input/input.h"
+
+1506031330 source:c:\users\moncho\documents\tp_laboratorio_1\tp2\tp_2\arreglos\arreglos.c
+	<stdio.h>
+	<stdlib.h>
+
+1506052394 c:\users\moncho\documents\tp_laboratorio_1\tp2\tp_2\arreglos\arreglo.h
 

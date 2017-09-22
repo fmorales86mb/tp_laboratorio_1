@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "fPersona.h"
+#include "Input/input.h"
 #define TAM 50
 #define TAMLIST 20
 
@@ -10,7 +11,7 @@ int main()
     int opcion=0;
     EPersona listaPersonas[TAMLIST] = {};
     int indiceLibre;
-    int dniBorrar;
+    long int dniBorrar;
     int flag;
     int indiceDni;
     EPersona persona;
@@ -38,16 +39,15 @@ int main()
                 if (indiceLibre>=0)
                 {
                     persona = ingresarPersona(TAM);
-                    printf("dni %d", persona.dni);
-                    system("pause");
                     indiceDni = buscarPorDni(listaPersonas, TAMLIST, persona.dni);
                     if (indiceDni>=0)
                     {
-                        listaPersonas[indiceLibre] = persona;
+                        printf("\nDNI repetido.");
+
                     }
                     else
                     {
-                        printf("\nDNI repetido.");
+                        listaPersonas[indiceLibre] = persona;
                     }
 
                 }
@@ -66,7 +66,7 @@ int main()
 
                 do
                 {
-                    flag = getInt(&dniBorrar, "Ingrese el DNI de la persona que desea borrar de la lista: ", "DNI Invalido.", 0, 1000000000);
+                    flag = getLongInt(&dniBorrar, "Ingrese el DNI de la persona que desea borrar de la lista: ", "DNI Invalido.", 0, 1147483647);
                 }while(flag==-1);
 
                 quitarPersonaDeLista(listaPersonas, TAMLIST, dniBorrar);

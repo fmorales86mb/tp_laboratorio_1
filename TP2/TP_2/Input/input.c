@@ -4,16 +4,7 @@
 #include <conio.h>
 #include <ctype.h>
 
-/**
-* \brief Solicita un número al usuario y lo chequea
-* \param input Se carga el numero ingresado (es una dirección de memoria).
-* \param message Es el mensaje a ser mostrado
-* \param eMessage Es el mensaje a ser mostrado en caso de error
-* \param lowLimit Limite inferior a validar
-* \param hiLimit Limite superior a validar
-* \return Si obtuvo el numero [0] si no [-1]
-*
-*/
+
 int getInt(int* input,char message[],char eMessage[], int lowLimit, int hiLimit)
 {
     int salida = -1;
@@ -36,17 +27,29 @@ int getInt(int* input,char message[],char eMessage[], int lowLimit, int hiLimit)
     return salida;
 }
 
+int getLongInt(long int* input,char message[],char eMessage[],long int lowLimit, long int hiLimit)
+{
+    int salida = -1;
+	long int nro;
 
-/**
-* \brief Solicita un número al usuario y lo chequea
-* \param input Se carga el numero ingresado
-* \param message Es el mensaje a ser mostrado
-* \param eMessage Es el mensaje a ser mostrado en caso de error
-* \param lowLimit Limite inferior a validar
-* \param hiLimit Limite superior a validar
-* \return Si obtuvo el numero [0] si no [-1]
-*
-*/
+    printf("\n%s", message);
+    scanf("%ld", &nro);
+
+    if (nro>hiLimit || nro<lowLimit)
+    {
+        printf("\n%s\n", eMessage);
+        //system("pause");
+    }
+    else
+    {
+        *input = nro;
+        salida = 0;
+    }
+
+    return salida;
+}
+
+
 int getFloat(float* input,char message[],char eMessage[], float lowLimit, float hiLimit)
 {
     int salida = -1;
@@ -70,16 +73,7 @@ int getFloat(float* input,char message[],char eMessage[], float lowLimit, float 
 }
 
 
-/**
-* \brief Solicita un caracter al usuario y lo chequea
-* \param input Se carga el caracter ingresado
-* \param message Es el mensaje a ser mostrado
-* \param eMessage Es el mensaje a ser mostrado en caso de error
-* \param lowLimit Limite inferior a validar
-* \param hiLimit Limite superior a validar
-* \return Si obtuvo el caracter [0] si no [-1]
-*
-*/
+
 int getChar(char* input,char message[],char eMessage[], char lowLimit, char hiLimit)
 {
     int salida = -1;
@@ -104,16 +98,7 @@ int getChar(char* input,char message[],char eMessage[], char lowLimit, char hiLi
 }
 
 
-/**
-* \brief Solicita una cadena de caracteres al usuario y la chequea
-* \param input Se carga el string ingresado
-* \param message Es el mensaje a ser mostrado
-* \param eMessage Es el mensaje a ser mostrado en caso de error
-* \param lowLimit Longitud mínima de la cadena
-* \param hiLimit Longitud máxima de la cadena
-* \return Si obtuvo la cadena [0] si no [-1]
-*
-*/
+
 int getString(char* input,char message[],char eMessage[], int lowLimit, int hiLimit)
 {
     int salida = -1;
@@ -139,3 +124,4 @@ int getString(char* input,char message[],char eMessage[], int lowLimit, int hiLi
 
     return salida;
 }
+

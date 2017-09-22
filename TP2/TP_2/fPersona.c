@@ -3,6 +3,7 @@
 #include <string.h>
 #include "fPersona.h"
 #include "Input/input.h"
+#include "Arreglos/arreglo.h"
 
 
 EPersona ingresarPersona (int strTam)
@@ -22,7 +23,7 @@ EPersona ingresarPersona (int strTam)
 
     do
     {
-        flag = getInt(&persona.dni, "Ingrese DNI: ", "DNI invalido.", 0, 10000);
+        flag = getLongInt(&persona.dni, "Ingrese DNI: ", "DNI invalido.", 0, 1147483647);
     }while(flag == -1);
 
     persona.estado=1;
@@ -47,7 +48,7 @@ int obtenerEspacioLibre(EPersona lista[], int tam)
     return indice;
 }
 
-int buscarPorDni(EPersona lista[], int tam, int dni)
+int buscarPorDni(EPersona lista[], int tam, long int dni_)
 {
 
     int indice = -1;
@@ -57,7 +58,7 @@ int buscarPorDni(EPersona lista[], int tam, int dni)
     {
         if (lista[i].estado==1)
         {
-            if (lista[i].dni == dni)
+            if (lista[i].dni == dni_)
             {
                 indice = i;
                 break;
@@ -68,7 +69,7 @@ int buscarPorDni(EPersona lista[], int tam, int dni)
     return indice;
 }
 
-void quitarPersonaDeLista(EPersona lista[], int tam, int dni)
+void quitarPersonaDeLista(EPersona lista[], int tam, long int dni)
 {
     int indiceDni;
     indiceDni = buscarPorDni(lista, tam, dni);
@@ -114,7 +115,7 @@ void imprimirLista (EPersona lista[], int tam)
     {
         if (lista[i].estado==1)
         {
-            printf("\nNombre: %s  Edad: %d  DNI: %d\n", lista[i].nombre, lista[i].edad, lista[i].dni);
+            printf("\nNombre: %s  Edad: %d  DNI: %ld\n", lista[i].nombre, lista[i].edad, lista[i].dni);
         }
     }
 }
@@ -124,10 +125,9 @@ void imprimirGraficoEdades (EPersona lista[], int tam)
 
 
     int i;
-    int men18 = 0; // No incluye 18
-    int ent19_35 = 0; // incluye 19 y 35
-    int may35 = 0; // no incluye 35
+    int gruposEdades [3]={};
     int edad;
+    int max;
     char asterisco1;
     char asterisco2;
     char asterisco3;
@@ -136,40 +136,43 @@ void imprimirGraficoEdades (EPersona lista[], int tam)
         if (lista[i].estado == 1)
         {
             edad = lista[i].edad;
-            if(edad<18)
+            if(edad<=18)
             {
-                men18++;
+                gruposEdades[0]++;
             }
             else if (edad>18 && edad<=35)
             {
-                ent19_35++;
+                gruposEdades[1]++;
             }
             else if (edad>35)
             {
-                may35++;
+                gruposEdades[2]++;
             }
         }
     }
 
-    for (i =tam; i>0; i--)
+    max = maximo(gruposEdades, 3);
+
+    for (i =max; i>0; i--)
     {
         asterisco1=' ';
         asterisco2=' ';
         asterisco3=' ';
 
-        if (men18>=i)
+        if (gruposEdades[0]>=i)
         {
             asterisco1='*';
         }
-        if(ent19_35>=i)
+        if(gruposEdades[1]>=i)
         {
             asterisco2='*';
         }
-        if(may35>=i)
+        if(gruposEdades[2]>=i)
         {
             asterisco3='*';
         }
-        printf("\n %c\t%c\n%c\n",asterisco1,asterisco2, asterisco3);
+        printf("\n  %c     %c     %c\n",asterisco1,asterisco2, asterisco3);
     }
+        printf("\n <18  19-35  >35\n\n");
 }
 
