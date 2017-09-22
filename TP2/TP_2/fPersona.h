@@ -30,7 +30,36 @@ int buscarPorDni(EPersona lista[], int tam, int dni);
  * @param tamaño del array nombre.
  * @return devuelve un struct EPersona con los datos ingresados por el usuario.
  */
-EPersona ingresarPersona (int tam);
+EPersona ingresarPersona (int strTam);
+
+/**
+ * Borrado lógico en array de EPersona segun dni.
+ * @param array de EPersona
+ * @param tamaño del array.
+ * @param dni de la persona a borrar.
+ */
+void quitarPersonaDeLista(EPersona lista[], int tam, int dni);
+
+/**
+ * Ordena lista por nombre alfabético.
+ * @param array de EPersona
+ * @param tamaño del array.
+ */
+void ordenarListaPorNombre(EPersona lista[], int tam);
+
+/**
+ * Imprime lista de Epersona.
+ * @param array de EPersona
+ * @param tamaño del array.
+ */
+void imprimirLista (EPersona lista[], int tam);
+
+/**
+ * Imprime gráfico de edades.
+ * @param array de EPersona
+ * @param tamaño del array.
+ */
+void imprimirGraficoEdades (EPersona lista[], int tam);
 
 
 
