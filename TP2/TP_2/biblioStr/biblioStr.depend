@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1506090001 source:c:\users\alumno\desktop\bibliostr\main.cpp
+	<iostream>
+	<stdio.h>
+	<stdlib.h>
+
+1506090391 source:c:\users\alumno\desktop\bibliostr\validacionstr.c
+

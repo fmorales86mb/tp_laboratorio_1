@@ -14,7 +14,7 @@
 	<stdlib.h>
 	"fPersona.h"
 
-1504560580 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp2\tp_2\input\input.c
+1506111268 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp2\tp_2\input\input.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -53,4 +53,10 @@
 	<stdlib.h>
 
 1506052394 c:\users\moncho\documents\tp_laboratorio_1\tp2\tp_2\arreglos\arreglo.h
+
+1506111268 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp2\tp_2\arreglos\arreglos.c
+	<stdio.h>
+	<stdlib.h>
+
+1506112300 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp2\tp_2\bibliostr\validacionstr.c
 

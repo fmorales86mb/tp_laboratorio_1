@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include "fPersona.h"
 #include "Input/input.h"
+#include "biblioStr/validacionStr.h"
+
 #define TAM 50
 #define TAMLIST 20
 

@@ -4,6 +4,7 @@
 #include "fPersona.h"
 #include "Input/input.h"
 #include "Arreglos/arreglo.h"
+#include "biblioStr/validacionStr.h"
 
 
 EPersona ingresarPersona (int strTam)
@@ -14,10 +15,19 @@ EPersona ingresarPersona (int strTam)
     do
     {
         flag = getString(&persona.nombre, "Ingrese Nombre: ", "Nombre invalido.", 1, strTam);
+        if (flag==0)
+        {
+            flag = soloLetras(persona.nombre);
+            if (flag==-1)
+            {
+                printf("\nNombre con caracteres invalidos.");
+            }
+        }
     }while(flag == -1);
 
     do
     {
+
         flag = getInt(&persona.edad, "Ingrese Edad: ", "Edad invalida.", 0, 100);
     }while(flag == -1);
 
