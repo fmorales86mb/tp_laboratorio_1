@@ -2,12 +2,14 @@
 #define FUNCIONES_H_INCLUDED
 
 typedef struct{
+    int id;
     char titulo[20];
     char genero[20];
     int duracion;
     char descripcion[50];
     int puntaje;
-    char linkImagen[50];
+    char linkImagen[500];
+    int estado;
 }EMovie;
 
 /**
@@ -28,7 +30,13 @@ int borrarPelicula(EMovie movie);
  *  Genera un archivo html a partir de las peliculas cargadas en el archivo binario.
  *  @param lista la lista de peliculas a ser agregadas en el archivo.
  *  @param nombre el nombre para el archivo.
+ *  @param sizeMo el tamaño de la lista.
  */
-void generarPagina(EMovie lista[], char nombre[]);
+void generarPagina(EMovie lista[], char nombre[], int sizeMo);
 
+void generarHtmlArticle(char* htmlArticle, char urlImagen[], char titulo[], char genero[], char puntaje[], char duracion[], char sinopsis[]);
+
+void harcodearListaMovie(EMovie lista[]);
+
+void inicializarMovies (EMovie lista [], int sizeMo);
 #endif // FUNCIONES_H_INCLUDED

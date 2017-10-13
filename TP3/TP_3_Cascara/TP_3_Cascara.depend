@@ -11,3 +11,32 @@
 	<stdlib.h>
 	"funciones.h"
 
+1507928209 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp3\tp_3_cascara\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+	"bibStrValidacion.h"
+	"validacionStr.h"
+
+1507928812 c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp3\tp_3_cascara\funciones.h
+
+1507920395 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp3\tp_3_cascara\bibstrvalidacion.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1507920395 c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp3\tp_3_cascara\bibstrvalidacion.h
+
+1507920395 c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp3\tp_3_cascara\validacionstr.h
+
+1507920395 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp3\tp_3_cascara\validacionstr.c
+
+1507928812 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp3\tp_3_cascara\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+	"bibStrValidacion.h"
+	"validacionStr.h"
+
