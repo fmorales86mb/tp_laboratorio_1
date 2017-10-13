@@ -4,8 +4,11 @@
 #include "funciones.h"
 #include "bibStrValidacion.h"
 #include "validacionStr.h"
+#include "input.h"
 
-#define MO 5
+#define MO 10
+#define STR 50
+#define STRLONG 500
 
 
 int main()
@@ -15,7 +18,7 @@ int main()
     int opcion=0;
     int flag;
 
-    char pageName [50]={"movies.html"};
+    char pageName [STR]={"movies.html"};
     inicializarMovies(lista, MO);
     harcodearListaMovie(lista);
 

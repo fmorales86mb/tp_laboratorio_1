@@ -1,15 +1,18 @@
 #ifndef FUNCIONES_H_INCLUDED
 #define FUNCIONES_H_INCLUDED
 
+#define MO 10
+#define STR 50
+#define STRLONG 500
+
 typedef struct{
     int id;
-    char titulo[20];
-    char genero[20];
+    char titulo[STR];
+    char genero[STR];
     int duracion;
-    char descripcion[50];
+    char descripcion[STRLONG];
     int puntaje;
-    char linkImagen[500];
-    int estado;
+    char linkImagen[STRLONG];
 }EMovie;
 
 /**
@@ -39,4 +42,6 @@ void generarHtmlArticle(char* htmlArticle, char urlImagen[], char titulo[], char
 void harcodearListaMovie(EMovie lista[]);
 
 void inicializarMovies (EMovie lista [], int sizeMo);
+
+EMovie pedirMovie ();
 #endif // FUNCIONES_H_INCLUDED

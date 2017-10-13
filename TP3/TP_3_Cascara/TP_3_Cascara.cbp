@@ -31,15 +31,27 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="bibStrValidacion.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="bibStrValidacion.h" />
 		<Unit filename="funciones.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="funciones.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="input.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="input.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="validacionStr.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="validacionStr.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
