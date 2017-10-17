@@ -231,7 +231,10 @@ int buscarIdLibre (EMovie lista[], int size)
 int levantarLista(EMovie lista[], int sizeMo, char nombre[])
 {
     int retorno;
+    int i;
+    int cant;
     FILE * archivo;
+
     archivo = fopen(nombre, "rb");
     if (archivo == NULL)
     {
@@ -241,11 +244,61 @@ int levantarLista(EMovie lista[], int sizeMo, char nombre[])
     else
     {
 
-        retorno = 1;
+        for (i=0; !feof(archivo) && i<sizeMo; i++)
+        {
+            cant = fread(&lista[i], sizeof(EMovie), 1, archivo);
+            if(cant!=1)
+            {
+                if(feof(archivo))
+                {
+                    break; // llegó al final del archivo.
+                }
+                else
+                {
+                    printf("\n No se leyo correctamente un registro.\n");
+                    retorno=0;
+                    break; // error en la lectura.
+                }
+            }
+
+            retorno=1; // Lecturas correctas.
+        }
     }
+
+    fclose(archivo);
+
+    return retorno;
 }
 
-int guardarLista(EMovie lista[], int sizeMo)
+int guardarLista(EMovie lista[], int sizeMo, char nombre[])
 {
+    int i;
+    int cant;
+    int retorno = 0;
+    FILE *archivo;
 
+    archivo = fopen(nombre, "wb");
+    if (archivo == NULL)
+    {
+        printf("\n El archivo no puede ser abierto.\n");
+        retorno = 0;
+    }
+    else
+    {
+        retorno = 1;
+        for(i=0; i<sizeMo; i++)
+        {
+            cant = fwrite(&lista[i], sizeof(EMovie), 1, archivo);
+            if (cant != 1)
+            {
+                printf("\n No se leyo correctamente un registro.\n");
+                retorno = 0;
+                break;
+            }
+        }
+    }
+
+    fclose(archivo);
+
+    return retorno;
 }

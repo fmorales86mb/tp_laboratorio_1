@@ -11,7 +11,7 @@
 	<stdlib.h>
 	"funciones.h"
 
-1507931814 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp3\tp_3_cascara\main.c
+1508268988 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp3\tp_3_cascara\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -20,7 +20,7 @@
 	"validacionStr.h"
 	"input.h"
 
-1508243263 c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp3\tp_3_cascara\funciones.h
+1508268838 c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp3\tp_3_cascara\funciones.h
 
 1507920395 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp3\tp_3_cascara\bibstrvalidacion.c
 	<stdio.h>
@@ -33,7 +33,7 @@
 
 1507920395 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp3\tp_3_cascara\validacionstr.c
 
-1508244903 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp3\tp_3_cascara\funciones.c
+1508268838 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp3\tp_3_cascara\funciones.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

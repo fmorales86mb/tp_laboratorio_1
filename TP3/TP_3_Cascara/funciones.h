@@ -49,4 +49,8 @@ int buscarIndiceLibre (EMovie lista[], int size);
 
 int buscarIdLibre (EMovie lista[], int size);
 
+int levantarLista(EMovie lista[], int sizeMo, char nombre[]);
+
+int guardarLista(EMovie lista[], int sizeMo, char nombre[]);
+
 #endif // FUNCIONES_H_INCLUDED

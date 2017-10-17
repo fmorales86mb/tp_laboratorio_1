@@ -23,6 +23,7 @@ int main()
     int flag;
 
     char pageName [STR]={"movies.html"};
+    char fileName [STR]={"File.dat"};
     inicializarMovies(lista, MO);
     harcodearListaMovie(lista);
 
@@ -38,7 +39,7 @@ int main()
 
         do
         {
-            flag = pedirInt(&opcion, " Elija una opcion: ", " Ingreso un valor incorrecto.", 1, 4);
+            flag = pedirInt(&opcion, " Elija una opcion: ", " Ingreso un valor incorrecto.", 1, 5);
         } while(flag == -1);
 
         switch(opcion)
@@ -54,6 +55,15 @@ int main()
                 system("pause");
                break;
             case 4:
+                if (guardarLista(lista, MO, fileName)==0)
+                {
+                    printf("\n error\n");
+                }
+                else
+                {
+                    printf("\n bien!\n");
+                }
+                system("pause");
                 break;
             case 5:
                 seguir = 'n';
