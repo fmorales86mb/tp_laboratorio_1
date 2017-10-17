@@ -20,7 +20,7 @@
 	"validacionStr.h"
 	"input.h"
 
-1507932711 c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp3\tp_3_cascara\funciones.h
+1508243263 c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp3\tp_3_cascara\funciones.h
 
 1507920395 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp3\tp_3_cascara\bibstrvalidacion.c
 	<stdio.h>
@@ -33,13 +33,14 @@
 
 1507920395 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp3\tp_3_cascara\validacionstr.c
 
-1507928812 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp3\tp_3_cascara\funciones.c
+1508244903 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp3\tp_3_cascara\funciones.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"funciones.h"
 	"bibStrValidacion.h"
 	"validacionStr.h"
+	"input.h"
 
 1507920395 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp3\tp_3_cascara\input.c
 	<stdio.h>

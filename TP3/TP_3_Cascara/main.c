@@ -10,7 +10,11 @@
 #define STR 50
 #define STRLONG 500
 
-
+/*
+El sistema va a levantar los datos del archivo y pasarlos a la lista.
+Se va a trabajar con lista de estructura (abm).
+El usuario va a tener una opción para guardar los cambios en el archivo.
+*/
 int main()
 {
     EMovie lista[MO];
@@ -29,7 +33,8 @@ int main()
         printf("\n 1- Agregar pelicula\n");
         printf(" 2- Borrar pelicula\n");
         printf(" 3- Generar pagina web\n");
-        printf(" 4- Salir\n\n");
+        printf(" 4- Guardar cambios\n");
+        printf(" 5- Salir\n\n");
 
         do
         {
@@ -49,6 +54,8 @@ int main()
                 system("pause");
                break;
             case 4:
+                break;
+            case 5:
                 seguir = 'n';
                 break;
         }

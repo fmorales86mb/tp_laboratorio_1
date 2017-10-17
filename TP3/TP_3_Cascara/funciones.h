@@ -20,7 +20,7 @@ typedef struct{
  *  @param movie la estructura a ser agregada al archivo
  *  @return retorna 1 o 0 de acuerdo a si pudo agregar la pelicula o no
  */
-int agregarPelicula(EMovie movie);
+int agregarPelicula(EMovie lista[], int sizeMo);
 
 /**
  *  Borra una pelicula del archivo binario
@@ -35,7 +35,7 @@ int borrarPelicula(EMovie movie);
  *  @param nombre el nombre para el archivo.
  *  @param sizeMo el tamaño de la lista.
  */
-void generarPagina(EMovie lista[], char nombre[], int sizeMo);
+int generarPagina(EMovie lista[], char nombre[], int sizeMo);
 
 void generarHtmlArticle(char* htmlArticle, char urlImagen[], char titulo[], char genero[], char puntaje[], char duracion[], char sinopsis[]);
 
@@ -44,4 +44,9 @@ void harcodearListaMovie(EMovie lista[]);
 void inicializarMovies (EMovie lista [], int sizeMo);
 
 EMovie pedirMovie ();
+
+int buscarIndiceLibre (EMovie lista[], int size);
+
+int buscarIdLibre (EMovie lista[], int size);
+
 #endif // FUNCIONES_H_INCLUDED

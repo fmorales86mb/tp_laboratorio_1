@@ -6,30 +6,40 @@
 #include "validacionStr.h"
 #include "input.h"
 
-int agregarPelicula(EMovie movie)
+int agregarPelicula(EMovie lista[], int sizeMo)
 {
     int retorno = 0;
     EMovie movie;
 
-    movie = pedirMovie();
-
-    if (movie.id != -1)
+    int indice = buscarIndiceLibre(lista, sizeMo);
+    if (indice!=-1)
     {
+        movie = pedirMovie();
 
+        if (movie.id != -1)
+        {
+            movie.id = buscarIdLibre(lista, sizeMo);
+            lista[indice] = movie;
+            printf("\n Pelicula agregada.\n");
+        }
     }
+    else
+    {
+        printf("\n No hay espacio en la lista de peliculas.\n");
+    }
+
 
     return retorno;
 }
-
-
 
 int borrarPelicula(EMovie movie)
 {
     return 0;
 }
 
-void generarPagina(EMovie lista[], char nombre[], int sizeMo)
+int generarPagina(EMovie lista[], char nombre[], int sizeMo)
 {
+    int retorno;
     int i;
     char strPuntaje[STR];
     char strDuracion[STR];
@@ -39,22 +49,33 @@ void generarPagina(EMovie lista[], char nombre[], int sizeMo)
     char htmlArticle[STRLONG];
 
     archivo = fopen(nombre, "w");
-    fprintf(archivo, htmlInicio);
-
-    for(i=0; i<sizeMo; i++)
+    if (archivo == NULL)
     {
-        if (lista[i].id != -1)
+        printf("\n El archivo no puede ser abierto.\n");
+        retorno = 0;
+    }
+    else
+    {
+        fprintf(archivo, htmlInicio);
+
+        for(i=0; i<sizeMo; i++)
         {
-            itoa(lista[i].puntaje, strPuntaje,10);
-            itoa(lista[i].duracion, strDuracion,10);
-            generarHtmlArticle(htmlArticle, lista[i].linkImagen, lista[i].titulo, lista[i].genero, strPuntaje, strDuracion, lista[i].descripcion);
-            fprintf(archivo, htmlArticle);
+            if (lista[i].id != -1)
+            {
+                itoa(lista[i].puntaje, strPuntaje,10);
+                itoa(lista[i].duracion, strDuracion,10);
+                generarHtmlArticle(htmlArticle, lista[i].linkImagen, lista[i].titulo, lista[i].genero, strPuntaje, strDuracion, lista[i].descripcion);
+                fprintf(archivo, htmlArticle);
+            }
         }
+
+        fprintf(archivo, htmlFin);
+        retorno = 1;
     }
 
-    fprintf(archivo, htmlFin);
-
     fclose(archivo);
+
+    return retorno;
 }
 
 void generarHtmlArticle(char* htmlArticle, char urlImagen[], char titulo[], char genero[], char puntaje[], char duracion[], char sinopsis[])
@@ -188,4 +209,43 @@ int buscarIndiceLibre (EMovie lista[], int size)
     }
 
     return indice;
+}
+
+int buscarIdLibre (EMovie lista[], int size)
+{
+    int i;
+    int id = -1;
+    int maximo;
+
+    for (i=0; i<size; i++)
+    {
+        if(i==0 || lista[i].id > maximo)
+        {
+            maximo = lista[i].id;
+        }
+    }
+
+    return id;
+}
+
+int levantarLista(EMovie lista[], int sizeMo, char nombre[])
+{
+    int retorno;
+    FILE * archivo;
+    archivo = fopen(nombre, "rb");
+    if (archivo == NULL)
+    {
+        printf("\n El archivo no puede ser abierto.\n");
+        retorno = 0;
+    }
+    else
+    {
+
+        retorno = 1;
+    }
+}
+
+int guardarLista(EMovie lista[], int sizeMo)
+{
+
 }
