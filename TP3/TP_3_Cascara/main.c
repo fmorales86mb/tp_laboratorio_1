@@ -6,7 +6,7 @@
 #include "validacionStr.h"
 #include "input.h"
 
-#define MO 10
+#define MO 50
 #define STR 50
 #define STRLONG 500
 
@@ -25,28 +25,34 @@ int main()
     char pageName [STR]={"movies.html"};
     char fileName [STR]={"File.dat"};
     inicializarMovies(lista, MO);
-    harcodearListaMovie(lista);
+    //harcodearListaMovie(lista);
+    levantarLista(lista, MO, fileName);
 
     while(seguir=='s')
     {
         system("cls");
         printf("\n\t--MENU--\n");
-        printf("\n 1- Agregar pelicula\n");
-        printf(" 2- Borrar pelicula\n");
-        printf(" 3- Generar pagina web\n");
-        printf(" 4- Guardar cambios\n");
-        printf(" 5- Salir\n\n");
+        printf("\n 1- Agregar pelicula.\n");
+        printf(" 2- Borrar pelicula.\n");
+        printf(" 3- Generar pagina web.\n");
+        printf(" 4- Guardar cambios en un archivo.\n");
+        printf(" 5- Lista de peliculas.\n");
+        printf(" 6- Salir.\n\n");
 
         do
         {
-            flag = pedirInt(&opcion, " Elija una opcion: ", " Ingreso un valor incorrecto.", 1, 5);
+            flag = pedirInt(&opcion, " Elija una opcion: ", " Ingreso un valor incorrecto.",1 , 6);
         } while(flag == -1);
 
         switch(opcion)
         {
             case 1:
+                system("cls");
+                agregarPelicula(lista, MO);
                 break;
             case 2:
+                system("cls");
+                borrarPelicula(lista, MO);
                 break;
             case 3:
                 system("cls");
@@ -57,15 +63,20 @@ int main()
             case 4:
                 if (guardarLista(lista, MO, fileName)==0)
                 {
-                    printf("\n error\n");
+                    printf("\n La lista no se pudo guardar correctamente.\n");
                 }
                 else
                 {
-                    printf("\n bien!\n");
+                    printf("\n Lista guardada.\n");
                 }
                 system("pause");
                 break;
             case 5:
+                system("cls");
+                listarPeliculas(lista, MO);
+                system("pause");
+                break;
+            case 6:
                 seguir = 'n';
                 break;
         }

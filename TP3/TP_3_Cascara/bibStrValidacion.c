@@ -11,8 +11,7 @@ int pedirInt (int* numero, char mje[], char emje[], int minimo, int maximo)
     int iPrimero;
 
     // ver cantidad de caracteres maximos según los bytes del tipo int.
-
-    printf("%s", mje);
+    printf("\n%s", mje);
     fflush( stdin );
     gets(strNro);
 
@@ -65,7 +64,7 @@ int pedirFloat (float* numero, char mje[], char emje[], float minimo, float maxi
 
     // ver cantidad de caracteres maximos según los bytes del tipo int.
 
-    printf("%s", mje);
+    printf("\n%s", mje);
     fflush( stdin );
     gets(strNro);
 
@@ -121,7 +120,7 @@ int pedirStrLetras (char cadena[], char mje[], char emje[], int minimo, int maxi
     int nro;
     int i = 0;
 
-    printf("%s", mje);
+    printf("\n%s", mje);
     fflush( stdin );
     gets(str);
 

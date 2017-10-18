@@ -27,7 +27,7 @@ int agregarPelicula(EMovie lista[], int sizeMo);
  *  @param movie la estructura a ser eliminada al archivo
  *  @return retorna 1 o 0 de acuerdo a si pudo eliminar la pelicula o no
  */
-int borrarPelicula(EMovie movie);
+int borrarPelicula(EMovie lista[], int sizeMo);
 
 /**
  *  Genera un archivo html a partir de las peliculas cargadas en el archivo binario.
@@ -52,5 +52,8 @@ int buscarIdLibre (EMovie lista[], int size);
 int levantarLista(EMovie lista[], int sizeMo, char nombre[]);
 
 int guardarLista(EMovie lista[], int sizeMo, char nombre[]);
+
+void listarPeliculas(EMovie lista[], int sizeMo);
+
 
 #endif // FUNCIONES_H_INCLUDED

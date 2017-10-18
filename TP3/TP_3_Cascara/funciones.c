@@ -20,21 +20,68 @@ int agregarPelicula(EMovie lista[], int sizeMo)
         {
             movie.id = buscarIdLibre(lista, sizeMo);
             lista[indice] = movie;
-            printf("\n Pelicula agregada.\n");
+            printf("\n Pelicula agregada.\n\n");
+            system("pause");
         }
     }
     else
     {
-        printf("\n No hay espacio en la lista de peliculas.\n");
+        printf("\n No hay espacio en la lista de peliculas.\n\n");
+        system("pause");
     }
 
 
     return retorno;
 }
 
-int borrarPelicula(EMovie movie)
+int borrarPelicula(EMovie lista[], int sizeMo)
 {
-    return 0;
+    int i;
+    int id;
+    int flag;
+    int chances = 0;
+    int retorno = -1;
+
+    listarPeliculas(lista, sizeMo);
+
+    do
+    {
+        flag = pedirInt(&id, " Ingrese el ID de la pelicula que desea borrar: ", " ID invalido.", 1 , buscarIdLibre(lista, sizeMo));
+        chances++;
+    } while(flag == -1 && chances<3);
+
+    if (chances<3)
+    {
+        retorno = 0;
+        for (i=0; i<sizeMo; i++)
+        {
+            if (lista[i].id == id)
+            {
+                lista[i].id = -1;
+                retorno = 1;
+                break;
+            }
+        }
+    }
+
+    switch (retorno)
+    {
+        case -1:
+            break;
+        case 0:
+            printf("\n ID no encontrado.\n");
+            break;
+        case 1:
+            printf("\n Pelicula borrada.\n");
+            break;
+        default:
+            printf("\n Error.\n");
+            break;
+    }
+
+    system("pause");
+
+    return retorno;
 }
 
 int generarPagina(EMovie lista[], char nombre[], int sizeMo)
@@ -155,7 +202,7 @@ EMovie pedirMovie ()
         chances = 0;
         do
         {
-            flag = pedirInt(&movie.duracion, " Duracion: ", " Duracion invalida.", 1, STR);
+            flag = pedirInt(&movie.duracion, " Duracion (minutos): ", " Duracion invalida.", 1, 800);
         }while (flag == -1 && chances<3);
     }
 
@@ -173,7 +220,7 @@ EMovie pedirMovie ()
         chances = 0;
         do
         {
-            flag = pedirInt(&movie.puntaje, " Puntaje: ", " Puntaje invalido.", 1, STR);
+            flag = pedirInt(&movie.puntaje, " Puntaje (1 a 10): ", " Puntaje invalido.", 1, 10);
         }while (flag == -1 && chances<3);
     }
 
@@ -186,7 +233,7 @@ EMovie pedirMovie ()
         }while (flag == -1 && chances<3);
     }
 
-    if (chances<3)
+    if (chances==3)
     {
         movie.id=-1;
     }
@@ -223,6 +270,15 @@ int buscarIdLibre (EMovie lista[], int size)
         {
             maximo = lista[i].id;
         }
+    }
+
+    if (maximo==-1) // caso en el que la lista está vacía
+    {
+        id = maximo+2;
+    }
+    else
+    {
+        id = maximo+1;
     }
 
     return id;
@@ -301,4 +357,21 @@ int guardarLista(EMovie lista[], int sizeMo, char nombre[])
     fclose(archivo);
 
     return retorno;
+}
+
+void listarPeliculas(EMovie lista[], int sizeMo)
+{
+    int i;
+
+    printf("\n ID \t Titulo \t Genero \t Duracion \t Puntaje \t \n\n");
+
+    for(i=0; i<sizeMo; i++)
+    {
+        if(lista[i].id>0)
+        {
+            printf(" %d \t %s \t %s \t %d \t %d \t \n", lista[i].id ,
+                   lista[i].titulo , lista[i].genero , lista[i].duracion , lista[i].puntaje);
+        }
+    }
+    printf("\n");
 }
