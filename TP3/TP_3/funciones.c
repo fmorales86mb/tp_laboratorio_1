@@ -22,6 +22,7 @@ int agregarPelicula(EMovie lista[], int sizeMo, char fileName[])
             lista[indice] = movie;
             if (guardarLista(lista, MO, fileName)==0)
             {
+                retorno = 0;
                 printf("\n La pelicula no se pudo guardar correctamente.\n");
             }
             else
@@ -79,6 +80,7 @@ int borrarPelicula(EMovie lista[], int sizeMo, char fileName[])
         case 1:
             if (guardarLista(lista, MO, fileName)==0)
             {
+                retorno=0;
                 printf("\n La pelicula no se pudo borrar correctamente.\n");
             }
             else
@@ -140,6 +142,7 @@ int modificarPelicula (EMovie lista[], int sizeMo, char fileName[])
         case 2:
             if (guardarLista(lista, MO, fileName)==0)
             {
+                retorno = 0;
                 printf("\n La pelicula no se pudo guardar correctamente.\n");
             }
             else
