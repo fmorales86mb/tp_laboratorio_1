@@ -21,12 +21,12 @@ ArrayList* al_newArrayList(void)
 {
     ArrayList* this;
     ArrayList* returnAux = NULL;
-    void* pElements;
+    void** pElements;
     this = (ArrayList *)malloc(sizeof(ArrayList));
 
     if(this != NULL)
     {
-        pElements = malloc(sizeof(void *)*AL_INITIAL_VALUE );
+        pElements =(void**) malloc(sizeof(void *)*AL_INITIAL_VALUE );
         if(pElements != NULL)
         {
             this->size=0;
@@ -70,6 +70,23 @@ ArrayList* al_newArrayList(void)
 int al_add(ArrayList* this, void* pElement)
 {
     int returnAux = -1;
+
+    //printf("entra");
+    if (this != NULL && pElement != NULL)
+    {
+        returnAux = 0;
+        if(this->size >= (this->len))
+        {
+            printf("entra");
+            returnAux = resizeUp(this);
+        }
+
+        if(returnAux == 0)
+        {
+            this->pElements[this->size] = pElement;
+            this->size++;
+        }
+    }
 
     return returnAux;
 }
@@ -302,9 +319,17 @@ int al_sort(ArrayList* this, int (*pFunc)(void* ,void*), int order)
 int resizeUp(ArrayList* this)
 {
     int returnAux = -1;
+    void** punteroAux;
+
+    punteroAux = (void**) realloc (this->pElements, sizeof(void*)*AL_INCREMENT);
+
+    if(punteroAux != NULL)
+    {
+        this->pElements = punteroAux;
+        returnAux = 0;
+    }
 
     return returnAux;
-
 }
 
 /** \brief  Expand an array list
