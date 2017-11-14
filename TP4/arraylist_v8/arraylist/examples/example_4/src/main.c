@@ -27,21 +27,21 @@
 int main(void) {
         startTesting(1); //al_newArrayList
         startTesting(2); //al_add
-        //startTesting(3); //al_delete
+        startTesting(3); //al_delete
         startTesting(4); //al_len
         startTesting(5); //al_get
         startTesting(6); //al_contains
         startTesting(7); // al_set
         startTesting(8); //al_remove
         //startTesting(9);
-        //startTesting(10);
-        startTesting(11);
-        /*startTesting(12);
-        startTesting(13);
-        startTesting(14);
-        startTesting(15);
-        startTesting(16);
-        startTesting(17);*/
+        startTesting(10); //al_clone
+        startTesting(11); //al_push     ERROR
+        startTesting(12); //al_index of
+        startTesting(13); // al is empty
+        startTesting(14); //al pop      ERROR
+        startTesting(15); //al subList  ERROR
+        startTesting(16); // al conteinsAll
+        //startTesting(17);
 
     return 0;
 }

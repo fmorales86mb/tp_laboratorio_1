@@ -96,7 +96,11 @@ int al_add(ArrayList* this, void* pElement) {
 int al_deleteArrayList(ArrayList* this)
 {
     int returnAux = -1;
-
+    if(this!=NULL)
+    {
+        returnAux = 0;
+        free(this);
+    }
     return returnAux;
 }
 
@@ -207,11 +211,6 @@ int al_remove(ArrayList* this,int index)
             this->pElements[i] = this->pElements[i+1];
         }
         this->size--;
-        //[1]
-        // [0, 1, 2, 3, 4, 5, 6, 7] size = 8
-        // [0, 1, 2, 3, 4, 5, 7, 7] size = 8
-        // borrar lista(4)
-        // [1, 2, 3, 4, 6, 7, 8]
     }
 
     return returnAux;
@@ -241,6 +240,20 @@ int al_clear(ArrayList* this)
 ArrayList* al_clone(ArrayList* this)
 {
     ArrayList* returnAux = NULL;
+    int i;
+
+    if(this!=NULL)
+    {
+        returnAux = al_newArrayList();
+        if (returnAux!=NULL)
+        {
+            for(i=0; i<this->size; i++)
+            {
+                //no chequeo lo que devuelve porque ya hice las verificaciones que repite la función.
+                returnAux->add(returnAux, this->pElements[i]);
+            }
+        }
+    }
 
     return returnAux;
 }
@@ -263,14 +276,16 @@ int al_push(ArrayList* this, int index, void* pElement)
     if(this!=NULL && pElement!= NULL && index>=0 && index<this->size)
     {
         returnAux = 0;
-        if(this->size == this->reservedSize)
+
+        if(this->size >= this->reservedSize)
         {
             returnAux = resizeUp(this);
         }
+
         if (returnAux == 0)
         {
             // Corro delsde el index uno para la derecha
-            for(i = this->size-1; i>index ;i--)
+            for(i = (this->size-1); i>=index ;i--)
             {
                 this->pElements[i+1] = this->pElements[i];
             }
@@ -279,14 +294,6 @@ int al_push(ArrayList* this, int index, void* pElement)
 
             this->size++;
         }
-
-        //[0,1,2,3] size 4
-        //[0,1,2,3,3]
-        //[0,1,2,3,3]
-
-        //[0,1,2,3,4] size = 5
-        // push (4, x);
-        // [0,1,x,2,3] size 5 reserversize
     }
 
     return returnAux;
@@ -302,6 +309,19 @@ int al_push(ArrayList* this, int index, void* pElement)
 int al_indexOf(ArrayList* this, void* pElement)
 {
     int returnAux = -1;
+    int i;
+
+    if(this != NULL && pElement!=NULL)
+    {
+        for(i=0; i<this->size; i++)
+        {
+            if (this->pElements[i] == pElement)
+            {
+                returnAux = i;
+                break;
+            }
+        }
+    }
 
     return returnAux;
 }
@@ -315,6 +335,16 @@ int al_indexOf(ArrayList* this, void* pElement)
 int al_isEmpty(ArrayList* this)
 {
     int returnAux = -1;
+
+    if(this != NULL)
+    {
+        returnAux = 0;
+        // si está vacio
+        if (this->size == 0)
+        {
+            returnAux = 1;
+        }
+    }
 
     return returnAux;
 }
@@ -331,6 +361,11 @@ int al_isEmpty(ArrayList* this)
 void* al_pop(ArrayList* this,int index)
 {
     void* returnAux = NULL;
+    if(this!=NULL && index>=0 && index<this->size)
+    {
+        returnAux = this->pElements[index];
+        this->remove(index);
+    }
 
     return returnAux;
 }
@@ -346,7 +381,21 @@ void* al_pop(ArrayList* this,int index)
  */
 ArrayList* al_subList(ArrayList* this,int from,int to)
 {
-    void* returnAux = NULL;
+    ArrayList* returnAux = NULL;
+    int i;
+
+    if (this!=NULL && from >=0 && from <this->size && to >=0 && to <this->size)
+    {
+        returnAux = al_newArrayList();
+        if (returnAux!=NULL)
+        {
+            for(i=from; i<to; i++) //INCLUSIVE FROM Y TO
+            {
+                //no chequeo lo que devuelve porque ya hice las verificaciones que repite la función.
+                returnAux->add(returnAux, this->pElements[i]);
+            }
+        }
+    }
 
     return returnAux ;
 }
@@ -364,6 +413,36 @@ ArrayList* al_subList(ArrayList* this,int from,int to)
 int al_containsAll(ArrayList* this,ArrayList* this2)
 {
     int returnAux = -1;
+    int i;
+    int j;
+    int flag = 0;
+
+    // chequeo que todos los elementos de this2 estén contenidos en this
+    if(this!=NULL && this2!=NULL)
+    {
+        returnAux = 1;
+
+        // busco un elemento que no compartan las listas
+        for(i=0; i<this2->size; i++)
+        {
+            for(j=0; j<this->size; j++)
+            {
+                flag = 1;
+                if (this2->pElements[i] == this->pElements[j])
+                {
+                    flag = 0;
+                    break;
+                }
+            }
+
+            //Caso de elemento en this2 que no está en this
+            if (flag == 1)
+            {
+                returnAux = 0;
+                break;
+            }
+        }
+    }
 
     return returnAux;
 }
