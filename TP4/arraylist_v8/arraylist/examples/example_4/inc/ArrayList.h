@@ -16,25 +16,27 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+
+
 #ifndef __ARRAYLIST
 #define __ARRAYLIST
-struct ArrayList{
 
-    void** pElements;
+struct ArrayList{
+    void** pElements; // array de punteros
     int size;
     int reservedSize;
 
-    int     (*add)();
-    int     (*len)();
-    int     (*contains)();
-    int     (*set)();
-    int     (*remove)();
+    int     (*len)();       // ok
+    int     (*contains)();  // ok
     int     (*clear)();
-    int     (*push)();
     int     (*indexOf)();
     int     (*isEmpty)();
-    void*   (*get)();
-    void*   (*pop)();
+    int     (*add)();           // ok. Agrega al final
+    int     (*remove)();        // ok. borra en una posicion y mueve todo para atras para que no queden huecos
+    void*   (*get)();           // ok. Solo devuelve el puntero del elemento
+    int     (*set)();           // ok. pisa un valor con otro nuevo (ya tiene que estar cargado)
+    int     (*push)();          // Recibe un indice. Agrega un elemento y desplaza lo que queda a la derecha una posicion
+    void*   (*pop)();           // Recibe un indice. Devuelve el puntero a un elemento y lo elimina de la lista, reorden. Al reves del push
     int     (*containsAll)();
     int     (*sort)();
     struct ArrayList* (* clone)();

@@ -67,22 +67,19 @@ ArrayList* al_newArrayList(void)
  * \return int Return (-1) if Error [pList or pElement are NULL pointer] - (0) if Ok
  *
  */
-int al_add(ArrayList* this, void* pElement)
-{
+int al_add(ArrayList* this, void* pElement) {
     int returnAux = -1;
 
-    //printf("entra");
-    if (this != NULL && pElement != NULL)
-    {
+    if (this != NULL && pElement != NULL) {
         returnAux = 0;
-        if(this->size >= (this->len))
-        {
-            printf("entra");
+
+        // Si el tamano no alcanza lo tratamos de redimensionar
+        if(this->size >= this->reservedSize){
             returnAux = resizeUp(this);
         }
 
-        if(returnAux == 0)
-        {
+        // Si pudimos redimencionarlo o no hizo falta, agretamos el elemento
+        if(returnAux == 0){
             this->pElements[this->size] = pElement;
             this->size++;
         }
@@ -108,9 +105,12 @@ int al_deleteArrayList(ArrayList* this)
  * \return int Return length of array or (-1) if Error [pList is NULL pointer]
  *
  */
-int al_len(ArrayList* this)
-{
+int al_len(ArrayList* this) {
     int returnAux = -1;
+
+    if (this != NULL) {
+        returnAux = this->size;
+    }
 
     return returnAux;
 }
@@ -125,6 +125,10 @@ int al_len(ArrayList* this)
 void* al_get(ArrayList* this, int index)
 {
     void* returnAux = NULL;
+    if (this!= NULL && index>=0 && index<this->size)
+    {
+        returnAux = this->pElements[index];
+    }
 
     return returnAux;
 }
@@ -141,6 +145,21 @@ void* al_get(ArrayList* this, int index)
 int al_contains(ArrayList* this, void* pElement)
 {
     int returnAux = -1;
+    int i;
+
+    if (this != NULL && pElement != NULL)
+    {
+        returnAux = 0;
+
+        for (i=0; i<this->size; i++)
+        {
+            if(pElement == this->pElements[i])
+            {
+                returnAux = 1;
+                break;
+            }
+        }
+    }
 
     return returnAux;
 }
@@ -157,8 +176,15 @@ int al_contains(ArrayList* this, void* pElement)
 int al_set(ArrayList* this, int index,void* pElement)
 {
     int returnAux = -1;
+    if (this !=NULL && pElement != NULL && index>=0 && index<this->size)
+    {
+        returnAux = 0;
+        this->pElements[index] = pElement;
+    }
 
     return returnAux;
+
+    return 0;
 }
 
 
@@ -171,6 +197,22 @@ int al_set(ArrayList* this, int index,void* pElement)
 int al_remove(ArrayList* this,int index)
 {
     int returnAux = -1;
+    int i;
+
+    if(this!=NULL && index>=0 && index<this->size)
+    {
+        returnAux = 0;
+        for (i=index; i<(this->size-1);i++)
+        {
+            this->pElements[i] = this->pElements[i+1];
+        }
+        this->size--;
+        //[1]
+        // [0, 1, 2, 3, 4, 5, 6, 7] size = 8
+        // [0, 1, 2, 3, 4, 5, 7, 7] size = 8
+        // borrar lista(4)
+        // [1, 2, 3, 4, 6, 7, 8]
+    }
 
     return returnAux;
 }
@@ -216,6 +258,36 @@ ArrayList* al_clone(ArrayList* this)
 int al_push(ArrayList* this, int index, void* pElement)
 {
     int returnAux = -1;
+    int i;
+
+    if(this!=NULL && pElement!= NULL && index>=0 && index<this->size)
+    {
+        returnAux = 0;
+        if(this->size == this->reservedSize)
+        {
+            returnAux = resizeUp(this);
+        }
+        if (returnAux == 0)
+        {
+            // Corro delsde el index uno para la derecha
+            for(i = this->size-1; i>index ;i--)
+            {
+                this->pElements[i+1] = this->pElements[i];
+            }
+            // agrego el elemento en el indice
+            this->pElements[index] = pElement;
+
+            this->size++;
+        }
+
+        //[0,1,2,3] size 4
+        //[0,1,2,3,3]
+        //[0,1,2,3,3]
+
+        //[0,1,2,3,4] size = 5
+        // push (4, x);
+        // [0,1,x,2,3] size 5 reserversize
+    }
 
     return returnAux;
 }
@@ -321,11 +393,13 @@ int resizeUp(ArrayList* this)
     int returnAux = -1;
     void** punteroAux;
 
-    punteroAux = (void**) realloc (this->pElements, sizeof(void*)*AL_INCREMENT);
+    // Estamos pidiendo mas memoria
+    punteroAux = (void**) realloc (this->pElements, sizeof (void*) * (this->reservedSize + AL_INCREMENT));
 
-    if(punteroAux != NULL)
-    {
-        this->pElements = punteroAux;
+    // si obtuvimos mas memoria entonces actualizamos todo
+    if(punteroAux != NULL){
+        this->pElements = punteroAux;   // Actualizamos el puntero al nuevo bloque de memoria que obtuvimos
+        this->reservedSize += AL_INCREMENT; // Guardamos el nuevo tama;o
         returnAux = 0;
     }
 

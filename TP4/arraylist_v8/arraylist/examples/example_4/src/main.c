@@ -24,22 +24,19 @@
 #include "../inc/ArrayList.h"
 #include "../inc/Employee.h"
 
-
-
-int main(void)
-{
-        //startTesting(1); //al_newArrayList
+int main(void) {
+        startTesting(1); //al_newArrayList
         startTesting(2); //al_add
-        /*startTesting(3); //al_len
-        startTesting(4); //al_contains
-        startTesting(5); //
-        startTesting(6); //
-        startTesting(7);
-        startTesting(8);
-        startTesting(9);
-        startTesting(10);
+        //startTesting(3); //al_delete
+        startTesting(4); //al_len
+        startTesting(5); //al_get
+        startTesting(6); //al_contains
+        startTesting(7); // al_set
+        startTesting(8); //al_remove
+        //startTesting(9);
+        //startTesting(10);
         startTesting(11);
-        startTesting(12);
+        /*startTesting(12);
         startTesting(13);
         startTesting(14);
         startTesting(15);
