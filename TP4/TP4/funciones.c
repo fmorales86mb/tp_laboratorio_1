@@ -26,53 +26,62 @@ EMovie* newEMovie (void)
     return returnAux;
 }
 
-int agregarPelicula(ArrayList *lista) {
+int agregarPelicula(ArrayList *lista, char* fileName)
+{
     int retorno = 1;
     EMovie* movie = NULL;
     movie = newEMovie();
 
-    if (movie!=NULL) {
-        if (pedirMovie (movie) != 0) {
-            // Aca tenemos la pelicula cargada entoncesla agregamos a la lista
+    if (movie!=NULL)
+    {
+        if (pedirMovie (movie) != 0)
+        {
+            // Aca tenemos la pelicula cargada entonces la agregamos a la lista
             lista->add (lista, movie);
-
-        } else {
+            guardarLista(lista, fileName, sizeof(EMovie));
+        }
+        else
+        {
             retorno = 0;
         }
-
-    } else {
+    }
+    else
+    {
         retorno = 0;
     }
 
     return retorno;
 }
 
-int borrarPelicula(EMovie lista[], int sizeMo, char fileName[])
+int borrarPelicula(ArrayList* lista, char* fileName)
 {
-    /*
     int i;
     int id;
     int flag;
     int chances = 0;
     int retorno = -1;
+    EMovie* movie;
 
     listarPeliculas(lista);
 
     do
     {
-        flag = pedirInt(&id, " Ingrese el ID de la pelicula que desea borrar: ", " ID invalido.", 1 , buscarIdLibre(lista, sizeMo));
+        flag = pedirInt(&id, " Ingrese el ID de la pelicula que desea borrar: ", " ID invalido.", 1 , proximo_id);
         chances++;
     } while(flag == -1 && chances<3);
 
     if (chances<3)
     {
         retorno = 0;
-        for (i=0; i<sizeMo; i++)
+        for (i=0; i<lista->len(lista); i++)
         {
-            if (lista[i].id == id)
+            movie = lista->get(lista, i);
+            if (movie->id == id)
             {
-                lista[i].id = -1;
-                retorno = 1;
+                if (lista->remove(lista, i)==0)
+                {
+                    retorno = 1;
+                }
                 break;
             }
         }
@@ -86,15 +95,7 @@ int borrarPelicula(EMovie lista[], int sizeMo, char fileName[])
             printf("\n ID no encontrado.\n");
             break;
         case 1:
-            if (guardarLista(lista, MO, fileName)==0)
-            {
-                retorno=0;
-                printf("\n La pelicula no se pudo borrar correctamente.\n");
-            }
-            else
-            {
-                printf("\n Pelicula borrada.\n");
-            }
+            guardarLista(lista, fileName, sizeof(EMovie));
             break;
         default:
             printf("\n Error.\n");
@@ -104,40 +105,37 @@ int borrarPelicula(EMovie lista[], int sizeMo, char fileName[])
     system("pause");
 
     return retorno;
-*/
-    return 1;
 }
 
-int modificarPelicula (EMovie lista[], int sizeMo, char fileName[])
+int modificarPelicula (ArrayList* lista, char* fileName)
 {
-    /*
     int i;
     int id;
     int flag;
     int chances = 0;
     int retorno = 0;
-    EMovie movie;
+    EMovie* movie;
 
-
-    listarPeliculas(lista, sizeMo);
+    listarPeliculas(lista);
 
     do
     {
-        flag = pedirInt(&id, " Ingrese el ID de la pelicula que desea modificar: ", " ID invalido.", 1 , buscarIdLibre(lista, sizeMo));
+        flag = pedirInt(&id, " Ingrese el ID de la pelicula que desea modificar: ", " ID invalido.", 1 , proximo_id);
         chances++;
     } while(flag == -1 && chances<3);
 
     if (chances<3)
     {
         retorno = 1;
-        for (i=0; i<sizeMo; i++)
+        for (i=0; i<lista->len(lista); i++)
         {
-            if (lista[i].id == id)
+            movie = lista->get(lista, i);
+            if (movie->id == id)
             {
                 retorno = 2;
-                movie = pedirMovie();
-                movie.id = id;
-                lista[i] = movie;
+                pedirMovie(movie);
+                movie->id = id;
+                lista->set(lista, i, movie);
                 break;
             }
         }
@@ -151,27 +149,17 @@ int modificarPelicula (EMovie lista[], int sizeMo, char fileName[])
             printf("\n ID no encontrado.\n");
             break;
         case 2:
-            if (guardarLista(lista, MO, fileName)==0)
-            {
-                retorno = 0;
-                printf("\n La pelicula no se pudo guardar correctamente.\n");
-            }
-            else
-            {
-                printf("\n Pelicula Modificada.\n");
-            }
-            break;
+            guardarLista(lista, fileName, sizeof(EMovie));
         default:
             printf("\n Error.\n");
             break;
     }
     system("pause");
-*/
     return 0;
 }
 
-
-int pedirMovie (EMovie *movie) {
+int pedirMovie (EMovie *movie)
+{
     int flag;
     int chances = 0;
 
@@ -230,7 +218,6 @@ int pedirMovie (EMovie *movie) {
     return 1;
 }
 
-
 int buscarIdLibre (EMovie lista[], int size)
 {
     int i;
@@ -257,7 +244,8 @@ int buscarIdLibre (EMovie lista[], int size)
     return id;
 }
 
-int levantarLista(ArrayList* lista, char* nombre) {
+int levantarLista(ArrayList* lista, char* nombre)
+{
     int retorno;
     int i;
     int cant;
@@ -312,22 +300,30 @@ int levantarLista(ArrayList* lista, char* nombre) {
     return retorno;
 }
 
-int guardarLista(ArrayList *lista, char nombre[]) {
+int pisarArchivo(ArrayList *lista, char* nombre, int sizeOfStruct)
+{
     int i;
     int cant;
     int retorno = 0;
     FILE *archivo;
 
     archivo = fopen(nombre, "wb");
-    if (archivo == NULL){
+
+    if (archivo == NULL)
+    {
         printf("\n El archivo no puede ser abierto.\n");
         retorno = 0;
 
-    } else {
+    }
+    else
+    {
         retorno = 1;
 
-        for(i=0; i<lista->len (lista); i++) {
-            cant = fwrite(lista->get(lista, i), sizeof(EMovie), 1, archivo);
+        //printf("\nstr: %d\nobj: %d", sizeof(EMovie), sizeOfStruct);
+
+        for(i=0; i<lista->len (lista); i++)
+        {
+            cant = fwrite(lista->get(lista, i), sizeOfStruct, 1, archivo);
 
             if (cant != 1) {
                 printf("\n No pudo escribir correctamente un registro.\n");
@@ -342,44 +338,132 @@ int guardarLista(ArrayList *lista, char nombre[]) {
     return retorno;
 }
 
-void listarPeliculas(ArrayList *lista) {
+void listarPeliculas(ArrayList *lista)
+{
     EMovie *movie;
     int i;
 
-    printf("\n ID \t Titulo \t Genero \t Duracion \t Puntaje \t \n\n");
+    printf("\n Nro   ID   Titulo  Genero   Duracion   Puntaje  \n\n");
 
     for(i=0; i<lista->len(lista); i++) {
         movie = lista->get(lista, i);
 
-        printf(" %d \t %s \t %s \t %d \t %d \n", movie->id ,
+    printf("   %d      %d      %s       %s       %d        %d \n",i+1, movie->id ,
                    movie->titulo , movie->genero , movie->duracion , movie->puntaje);
     }
 
     printf("\n");
 }
 
-/*
-void harcodearListaMovie(EMovie lista[])
+int clearList (ArrayList* lista, char* fileName)
 {
-    int i;
+    int ret = 0;
 
-    int id[2]={1,2};
-    char titulo[2][STR]={{"peli1"},{"peli2"}};
-    char genero[2][STR]={{"accion"},{"drama"}};
-    int duracion[2]={123, 156};
-    char descripcion[2][STRLONG]={{"saraza"},{"sarlanga"}};
-    int puntaje[2]={10, 5};
-    char linkImagen[2][STRLONG]={{"http://ia.media-imdb.com/images/M/MV5BMjA5NTYzMDMyM15BMl5BanBnXkFtZTgwNjU3NDU2MTE@._V1_UX182_CR0,0,182,268_AL_.jpg"},{"https://images-na.ssl-images-amazon.com/images/M/MV5BMjZiNzIxNTQtNDc5Zi00YWY1LThkMTctMDgzYjY4YjI1YmQyL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UY190_CR2,0,128,190_AL_.jpg"}};
-
-    for(i=0; i<2; i++)
+    if(lista->clear(lista)==0)
     {
-        lista[i].id = id[i];
-        strcpy(lista[i].titulo, titulo[i]);
-        strcpy(lista[i].genero, genero[i]);
-        lista[i].duracion = duracion[i];
-        strcpy(lista[i].descripcion, descripcion[i]);
-        lista[i].puntaje = puntaje[i];
-        strcpy(lista[i].linkImagen, linkImagen[i]);
+        ret = 1;
+        printf("\n Lista vaciada.\n");
+        guardarLista(lista, fileName, sizeof(EMovie));
     }
+
+    return ret;
 }
-*/
+
+int copiarLista (ArrayList* lista, char* fileName2, int sizeOfStruct)
+{
+    int ret = 0;
+
+    ArrayList* cloneList = lista->clone(lista);
+
+    if (cloneList != NULL)
+    {
+        if(guardarLista(cloneList, fileName2, sizeOfStruct))
+        {
+            ret =1;
+        }
+    }
+    return ret;
+}
+
+int crearSublista (ArrayList* lista, char* fileName2, int sizeOfStruct)
+{
+    int ret = 0;
+    int flag;
+    int desde;
+    int hasta;
+
+    // entro si hay elementos en la lista
+    if(lista->isEmpty(lista)==0)
+    {
+        listarPeliculas(lista);
+
+        printf("\n -- Crear Sublista --\n\n");
+        do
+        {
+            flag = pedirInt(&desde, " Desde indice: ", " Ingreso un valor incorrecto.",1 , lista->len(lista));
+        } while(flag == -1);
+
+        do
+        {
+            flag = pedirInt(&hasta, " Hasta indice: ", " Ingreso un valor incorrecto.",desde , lista->len(lista));
+        } while(flag == -1);
+
+        ArrayList* subList = lista->subList(lista, desde-1, hasta-1);
+
+        if (subList != NULL)
+        {
+            if(guardarLista(subList, fileName2, sizeOfStruct))
+            {
+                ret =1;
+            }
+        }
+    }
+
+    return ret;
+}
+
+int ordenarLista (ArrayList* lista, char* fileName, int (*pFunc)(void* ,void*), int order )
+{
+    int ret = 0;
+
+    if (lista->sort(lista, pFunc, order) == 0)
+    {
+        if (guardarLista(lista, fileName, sizeof(EMovie)))
+        {
+            ret = 1;
+            listarPeliculas(lista);
+        }
+    }
+
+    return ret;
+}
+
+int guardarLista (ArrayList* lista, char* fileName, int sizeOfStruct)
+{
+    int retorno = 1;
+
+    if (pisarArchivo(lista, fileName, sizeOfStruct)==0)
+    {
+        retorno = 0;
+        printf("\n El archivo no se pudo actualizar correctamente.\n\n");
+    }
+    else
+    {
+        printf("\n Archivo actualizado.\n\n");
+    }
+    return retorno;
+}
+
+    // funcion de comparacion
+    int comparaElementos(void* elementoA, void* elementoB)
+    {
+        if(((EMovie*)elementoA)->puntaje > ((EMovie*)elementoB)->puntaje)
+        {
+            return 1;
+        }
+        if(((EMovie*)elementoA)->puntaje < ((EMovie*)elementoB)->puntaje)
+        {
+            return -1;
+        }
+        return 0;
+    }

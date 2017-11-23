@@ -28,7 +28,7 @@ EMovie* newEMovie (void);
  *  @param fileName, nombre del archivo binario
  *  @return retorna 1 o 0 de acuerdo a si pudo agregar la pelicula o no
  */
-int agregarPelicula(ArrayList *lista);
+int agregarPelicula(ArrayList *lista, char* fileName);
 
 /**
  *  Borra una pelicula del archivo binario y de la lista
@@ -37,7 +37,7 @@ int agregarPelicula(ArrayList *lista);
  *  @param fileName, nombre del archivo binario
  *  @return retorna 1 si pudo eliminar la pelicula. -1 o 0 si no pudo
  */
-int borrarPelicula(EMovie lista[], int sizeMo, char fileName[]);
+int borrarPelicula(ArrayList* lista, char* fileName);
 
 /**
  *  Modifica una pelicula del archivo binario y de la lista
@@ -46,7 +46,7 @@ int borrarPelicula(EMovie lista[], int sizeMo, char fileName[]);
  *  @param fileName, nombre del archivo binario
  *  @return retorna 2 si pudo eliminar la pelicula. 1 o 0 si no pudo
  */
-int modificarPelicula (EMovie lista[], int sizeMo, char fileName[]);
+int modificarPelicula (ArrayList* lista, char* fileName);
 
 /**
  *  Genera el archivo HTML con la lista de las peliculas
@@ -108,7 +108,7 @@ int levantarLista(ArrayList* lista, char* nombre);
  *  @param nombre, nombre del archivo binario.
  *  @return retorna 1 si guardó correctamente la lista, o 0 si no pudo
  */
-int guardarLista(ArrayList *lista, char nombre[]);
+int pisarArchivo(ArrayList *lista, char* nombre, int sizeOfStruct);
 
 
 /**
@@ -118,6 +118,16 @@ int guardarLista(ArrayList *lista, char nombre[]);
  */
 void listarPeliculas(ArrayList *lista);
 
-//void harcodearListaMovie(EMovie lista[]);
+int clearList (ArrayList* lista, char* fileName);
+
+int guardarLista (ArrayList* lista, char* fileName, int sizeOfStruct);
+
+int copiarLista (ArrayList* lista, char* fileName2, int sizeOfStruct);
+
+int crearSublista (ArrayList* lista, char* fileName2, int sizeOfStruct);
+
+int ordenarLista (ArrayList* lista, char* fileName, int (*pFunc)(void* ,void*), int order );
+
+int comparaElementos(void* elementoA, void* elementoB);
 
 #endif // FUNCIONES_H_INCLUDED

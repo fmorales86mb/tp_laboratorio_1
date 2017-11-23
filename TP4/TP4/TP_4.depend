@@ -50,3 +50,54 @@
 	"input.h"
 	"ArrayList.h"
 
+1511460386 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp4\tp4\bibstrvalidacion.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1511460386 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp4\tp4\input.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<ctype.h>
+
+1511475829 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp4\tp4\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+	"bibStrValidacion.h"
+	"validacionStr.h"
+	"input.h"
+	"ArrayList.h"
+
+1511477534 c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp4\tp4\funciones.h
+	"ArrayList.h"
+
+1511460387 c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp4\tp4\arraylist.h
+
+1511460386 c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp4\tp4\bibstrvalidacion.h
+
+1511460387 c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp4\tp4\validacionstr.h
+
+1511460386 c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp4\tp4\input.h
+
+1511460387 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp4\tp4\validacionstr.c
+
+1511475829 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp4\tp4\arraylist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1511477534 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp4\tp4\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+	"bibStrValidacion.h"
+	"validacionStr.h"
+	"input.h"
+	"ArrayList.h"
+

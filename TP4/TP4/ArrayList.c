@@ -33,21 +33,21 @@ ArrayList* al_newArrayList(void)
             this->size=0;
             this->pElements=pElements;
             this->reservedSize=AL_INITIAL_VALUE;
-            this->add=al_add;
-            this->len=al_len;
-            this->set=al_set;
-            this->remove=al_remove;
-            this->clear=al_clear;
-            this->clone=al_clone;
-            this->get=al_get;
-            this->contains=al_contains;
+            this->add=al_add; // Agrega un elemento al final de la lista - ok
+            this->len=al_len; // Cantidad de elementos - ok
+            this->set=al_set; // Pone un elemento dado en un determinado índice - ok
+            this->remove=al_remove; // Remueve un determinado elemento (usar el contract) - ok
+            this->clear=al_clear; // Remueve todos los elementos de la lista - ok
+            this->clone=al_clone; // Copia la lista en otro arrayList - ok
+            this->get=al_get; // Devuelve el elemento de un determinado indice - ok
+            this->contains=al_contains; // chequea que exista o no un determinado elemento
             this->push=al_push;
             this->indexOf=al_indexOf;
-            this->isEmpty=al_isEmpty;
+            this->isEmpty=al_isEmpty; // T, F si la lista està vacìa. - ok
             this->pop=al_pop;
-            this->subList=al_subList;
+            this->subList=al_subList; // sub lista desde indice hasta indice - ok
             this->containsAll=al_containsAll;
-            this->deleteArrayList = al_deleteArrayList;
+            this->deleteArrayList = al_deleteArrayList; //Borra el arrayList (ver)
             this->sort = al_sort;
             returnAux = this;
         }
@@ -213,6 +213,8 @@ int al_remove(ArrayList* this,int index)
             *(this->pElements+i) = *(this->pElements+(i+1));
         }
 
+        resizeDown(this);
+
         this->size--;
         returnAux = 0;
     }
@@ -272,8 +274,6 @@ ArrayList* al_clone(ArrayList* this)
 
     return returnAux;
 }
-
-
 
 
 /** \brief Inserts the element at the specified position
@@ -355,8 +355,6 @@ int al_isEmpty(ArrayList* this)
 
     return returnAux;
 }
-
-
 
 
 /** \brief Remove the item at the given position in the list, and return it.
@@ -468,7 +466,7 @@ int al_containsAll(ArrayList* this,ArrayList* this2)
  * \return int Return (-1) if Error [pList or pFunc are NULL pointer]
  *                  - (0) if ok
  */
-int al_sort(ArrayList* this, int (*pFunc)(void* ,void*), int order)
+    int al_sort(ArrayList* this, int (*pFunc)(void* ,void*), int order)
 {
     int returnAux = -1;
     void* aux;
@@ -479,24 +477,51 @@ int al_sort(ArrayList* this, int (*pFunc)(void* ,void*), int order)
     if (this!=NULL && pFunc!=NULL && order>=0 && order<=1)
     {
         returnAux = 0;
-
+/*
         for(i=0; i<this->size-2; i++)
         {
             for(j=i+1; j<this->size-1; j++)
             {
+*/
+         for(i=0; i < this->size-1; i++) {
+            for(j=i+1; j < this->size ; j++) {
+                // i < j
                 comp = pFunc(*(this->pElements+i), *(this->pElements+j));
+
+                // orden desendente
+                if (order == 1) {
+                    // si el salario de i > el salario de j ->  es decendente, no hacemos nada.
+                    // sino lo damos vuelta
+                    if (comp > 0) {
+                        aux = *(this->pElements+i);
+                        *(this->pElements+i) = *(this->pElements+j);
+                        *(this->pElements+j) = aux;
+                    }
+
+                // orden ascendente
+                } else {
+                    // si el salario de i > el salario de j ->  lo damos vuelta
+                    // sino no hacemos nada
+                    if (comp< 0) {
+                        aux = *(this->pElements+i);
+                        *(this->pElements+i) = *(this->pElements+j);
+                        *(this->pElements+j) = aux;
+                    }
+                }
+/*
                 if ((comp == 1 && order == 1) || (comp == -1 && order == 0))
                 {
-                    aux = *(this->pElements+i);
-                    *(this->pElements+i) = *(this->pElements+j);
-                    *(this->pElements+j) = aux;
+                    aux = this->pElements[i];
+                    this->pElements[i] = this->pElements[j];
+                    this->pElements[j] = aux;
                 }
+*/
             }
         }
     }
 
     return returnAux;
-}
+        }
 
 
 /** \brief Increment the number of elements in pList in AL_INCREMENT elements.
