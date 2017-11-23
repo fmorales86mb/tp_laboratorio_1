@@ -94,6 +94,7 @@ void seventeenthTestCase02(void)
 
     for (i=0;i < LENGTH;i++)
     {
+        printf("\naca\n");
         utest_assertEqualsFloatMsg(((Employee*)pAuxGet[i])->salary,salarySortedUp[i],"Error value in <.salary> after sort");
     }
 

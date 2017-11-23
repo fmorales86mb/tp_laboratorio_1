@@ -80,7 +80,8 @@ int al_add(ArrayList* this, void* pElement) {
 
         // Si pudimos redimencionarlo o no hizo falta, agretamos el elemento
         if(returnAux == 0){
-            this->pElements[this->size] = pElement;
+            //this->pElements[this->size] = pElement;
+            *(this->pElements+this->size) = pElement;
             this->size++;
         }
     }
@@ -477,18 +478,45 @@ int al_sort(ArrayList* this, int (*pFunc)(void* ,void*), int order)
     if (this!=NULL && pFunc!=NULL && order>=0 && order<=1)
     {
         returnAux = 0;
-
+/*
         for(i=0; i<this->size-2; i++)
         {
             for(j=i+1; j<this->size-1; j++)
             {
+*/
+         for(i=1; i < this->size; i++) {
+            for(j=0; j < this->size - i; j++) {
+                // i < j
                 comp = pFunc(this->pElements[i], this->pElements[j]);
+
+                // orden desendente
+                if (order == 0) {
+                    // si el salario de i > el salario de j ->  es decendente, no hacemos nada.
+                    // sino lo damos vuelta
+                    if (comp < 0) {
+                        aux = this->pElements[j];
+                        this->pElements[j] = this->pElements[j + 1];
+                        this->pElements[j + 1] = aux;
+                    }
+
+                // orden ascendente
+                } else {
+                    // si el salario de i > el salario de j ->  lo damos vuelta
+                    // sino no hacemos nada
+                    if (comp > 0) {
+                        aux = this->pElements[j];
+                        this->pElements[j] = this->pElements[j + 1];
+                        this->pElements[j + 1] = aux;
+                    }
+                }
+/*
                 if ((comp == 1 && order == 1) || (comp == -1 && order == 0))
                 {
                     aux = this->pElements[i];
                     this->pElements[i] = this->pElements[j];
                     this->pElements[j] = aux;
                 }
+*/
             }
         }
     }
