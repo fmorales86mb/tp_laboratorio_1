@@ -1,0 +1,103 @@
+# depslib dependency file v1.0
+1509922883 source:c:\users\moncho\documents\tp_laboratorio_1\tp4\tp4\bibstrvalidacion.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1509922883 source:c:\users\moncho\documents\tp_laboratorio_1\tp4\tp4\input.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<ctype.h>
+
+1509922883 source:c:\users\moncho\documents\tp_laboratorio_1\tp4\tp4\validacionstr.c
+
+1511380647 source:c:\users\moncho\documents\tp_laboratorio_1\tp4\tp4\arraylist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1511401150 c:\users\moncho\documents\tp_laboratorio_1\tp4\tp4\arraylist.h
+
+1511403221 source:c:\users\moncho\documents\tp_laboratorio_1\tp4\tp4\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+	"bibStrValidacion.h"
+	"validacionStr.h"
+	"input.h"
+	"ArrayList.h"
+
+1511403454 c:\users\moncho\documents\tp_laboratorio_1\tp4\tp4\funciones.h
+	"ArrayList.h"
+
+1509922883 c:\users\moncho\documents\tp_laboratorio_1\tp4\tp4\bibstrvalidacion.h
+
+1509922883 c:\users\moncho\documents\tp_laboratorio_1\tp4\tp4\validacionstr.h
+
+1509922883 c:\users\moncho\documents\tp_laboratorio_1\tp4\tp4\input.h
+
+1511403430 source:c:\users\moncho\documents\tp_laboratorio_1\tp4\tp4\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+	"bibStrValidacion.h"
+	"validacionStr.h"
+	"input.h"
+	"ArrayList.h"
+
+1511406357 source:c:\users\alumno\desktop\tp_laboratorio_1-master\tp4\tp4\bibstrvalidacion.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1511406357 source:c:\users\alumno\desktop\tp_laboratorio_1-master\tp4\tp4\input.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<ctype.h>
+
+1511406357 source:c:\users\alumno\desktop\tp_laboratorio_1-master\tp4\tp4\validacionstr.c
+
+1511445063 source:c:\users\alumno\desktop\tp_laboratorio_1-master\tp4\tp4\arraylist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1511406357 c:\users\alumno\desktop\tp_laboratorio_1-master\tp4\tp4\arraylist.h
+
+1511445653 source:c:\users\alumno\desktop\tp_laboratorio_1-master\tp4\tp4\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+	"bibStrValidacion.h"
+	"validacionStr.h"
+	"input.h"
+	"ArrayList.h"
+
+1511445405 c:\users\alumno\desktop\tp_laboratorio_1-master\tp4\tp4\funciones.h
+	"ArrayList.h"
+
+1511406357 c:\users\alumno\desktop\tp_laboratorio_1-master\tp4\tp4\bibstrvalidacion.h
+
+1511406357 c:\users\alumno\desktop\tp_laboratorio_1-master\tp4\tp4\validacionstr.h
+
+1511406357 c:\users\alumno\desktop\tp_laboratorio_1-master\tp4\tp4\input.h
+
+1511445514 source:c:\users\alumno\desktop\tp_laboratorio_1-master\tp4\tp4\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+	"bibStrValidacion.h"
+	"validacionStr.h"
+	"input.h"
+	"ArrayList.h"
+

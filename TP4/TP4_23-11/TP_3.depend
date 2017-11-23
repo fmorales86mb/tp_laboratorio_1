@@ -1,0 +1,93 @@
+# depslib dependency file v1.0
+1507901291 source:c:\users\alumno\desktop\tp3\tp_3_cascara\main.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+
+1507901291 c:\users\alumno\desktop\tp3\tp_3_cascara\funciones.h
+
+1507901377 source:c:\users\alumno\desktop\tp3\tp_3_cascara\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+
+1508356137 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp3\tp_3_cascara\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+	"bibStrValidacion.h"
+	"validacionStr.h"
+	"input.h"
+
+1508351886 c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp3\tp_3_cascara\funciones.h
+
+1508348052 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp3\tp_3_cascara\bibstrvalidacion.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1507920395 c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp3\tp_3_cascara\bibstrvalidacion.h
+
+1507920395 c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp3\tp_3_cascara\validacionstr.h
+
+1507920395 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp3\tp_3_cascara\validacionstr.c
+
+1508353565 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp3\tp_3_cascara\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+	"bibStrValidacion.h"
+	"validacionStr.h"
+	"input.h"
+
+1507920395 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp3\tp_3_cascara\input.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<ctype.h>
+
+1507920395 c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp3\tp_3_cascara\input.h
+
+1508348052 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp3\tp_3\bibstrvalidacion.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1507920395 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp3\tp_3\validacionstr.c
+
+1508357033 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp3\tp_3\input.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<ctype.h>
+
+1508364493 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp3\tp_3\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+	"bibStrValidacion.h"
+	"validacionStr.h"
+	"input.h"
+
+1508365549 c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp3\tp_3\funciones.h
+
+1507920395 c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp3\tp_3\bibstrvalidacion.h
+
+1507920395 c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp3\tp_3\validacionstr.h
+
+1508357032 c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp3\tp_3\input.h
+
+1508361174 source:c:\users\fmorales\desktop\fede\fra\laboratorio y programación 1\trabajos prácticos\tp3\tp_3\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+	"bibStrValidacion.h"
+	"validacionStr.h"
+	"input.h"
+
